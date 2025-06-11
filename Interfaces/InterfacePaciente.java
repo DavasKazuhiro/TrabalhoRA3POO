@@ -105,8 +105,9 @@ public class InterfacePaciente extends JFrame {
                         "Horário: " + c.getHora() + "\n\n" +
                         "Local: Clínica/Hospital XYZ\n" +
                         "Assinatura e carimbo: __________________________\n";
-
                     String nomeArquivo = System.getProperty("user.dir") + "/src/Exportacoes/" + "autorizacao_" + paciente.getNome().replaceAll(" ", "_") + "_consulta" + (indice + 1) + ".txt";
+                    // Descomente no vscode
+                    // String nomeArquivo = System.getProperty("user.dir") + "/Exportacoes/" + "autorizacao_" + paciente.getNome().replaceAll(" ", "_") + "_consulta" + (indice + 1) + ".txt";
                     try (FileWriter writer = new FileWriter(nomeArquivo)) {
                         writer.write(texto);
                         JOptionPane.showMessageDialog(null, "Autorização salva em: " + nomeArquivo);

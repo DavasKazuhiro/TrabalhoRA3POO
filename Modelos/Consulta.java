@@ -1,11 +1,12 @@
 package Modelos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class Consulta {
+public class Consulta implements Serializable {
     private LocalDate data;
     private LocalTime hora;
     private Paciente paciente;

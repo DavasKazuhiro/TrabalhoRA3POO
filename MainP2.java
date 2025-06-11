@@ -15,6 +15,9 @@ public class MainP2 {
 
         // Declarar o caminho dos arquivos
         String basePath = System.getProperty("user.dir") + "/src/";
+        // Se nao tiver usando Intellij e nao tem uma pasta src que o prorjeto esteja descomentar essa e comente a decima
+        // String basePath = System.getProperty("user.dir") + "/";
+
         String caminho_medicos = basePath + "Dados/medicos.csv";
         String caminho_pacientes = basePath + "Dados/pacientes.csv";
         String caminho_consultas = basePath + "Dados/consultas.csv";

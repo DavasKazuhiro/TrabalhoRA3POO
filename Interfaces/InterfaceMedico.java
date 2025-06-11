@@ -173,7 +173,10 @@ public class InterfaceMedico extends JFrame {
     }
 
     private void exportarConsultas() {
-        try (FileWriter writer = new FileWriter(System.getProperty("user.dir") + "/src/Exportacoes/" + "consultas_medico_" + medico.getIdMedico() + ".txt")) {
+        // Descomente no vsCode
+        // try (FileWriter writer = new FileWriter(System.getProperty("user.dir") + "/src/Exportacoes/" + "consultas_medico_" + medico.getIdMedico() + ".txt")) {
+
+        try (FileWriter writer = new FileWriter(System.getProperty("user.dir") + "/Exportacoes/" + "consultas_medico_" + medico.getIdMedico() + ".txt")) {
             for (Consulta c : consultas) {
                 if (c.getMedico().getIdMedico() == medico.getIdMedico()) {
                     writer.write(c.toString() + "\n");
