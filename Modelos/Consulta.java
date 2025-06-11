@@ -59,7 +59,7 @@ public class Consulta {
         DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm");
         return String.format(
-            "Consulta com Dr. %s para %s (CPF: %s) em %s às %s",
+            "Consulta com %s para %s (CPF: %s) em %s às %s",
             medico.getNome(),
             paciente.getNome(),
             paciente.getCpf(),

@@ -106,7 +106,7 @@ public class InterfacePaciente extends JFrame {
                         "Local: Clínica/Hospital XYZ\n" +
                         "Assinatura e carimbo: __________________________\n";
 
-                    String nomeArquivo = "autorizacao_" + paciente.getNome().replaceAll(" ", "_") + "_consulta" + (indice + 1) + ".txt";
+                    String nomeArquivo = System.getProperty("user.dir") + "/src/Exportacoes/" + "autorizacao_" + paciente.getNome().replaceAll(" ", "_") + "_consulta" + (indice + 1) + ".txt";
                     try (FileWriter writer = new FileWriter(nomeArquivo)) {
                         writer.write(texto);
                         JOptionPane.showMessageDialog(null, "Autorização salva em: " + nomeArquivo);
