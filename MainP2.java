@@ -1,5 +1,13 @@
 import java.util.List;
 
+import Modelos.Medico;
+import Modelos.Paciente;
+import Modelos.Consulta;
+
+import Interfaces.TelaInicial;
+
+import Dados.LeitorArquivo;
+
 public class MainP2 {
     public static void main(String[] args) {
         // Declarar o leitor de arquivos
@@ -7,9 +15,9 @@ public class MainP2 {
 
         // Declarar o caminho dos arquivos
         String basePath = System.getProperty("user.dir") + "/src/";
-        String caminho_medicos = basePath + "medicos.csv";
-        String caminho_pacientes = basePath + "pacientes.csv";
-        String caminho_consultas = basePath + "consultas.csv";
+        String caminho_medicos = basePath + "Dados/medicos.csv";
+        String caminho_pacientes = basePath + "Dados/pacientes.csv";
+        String caminho_consultas = basePath + "Dados/consultas.csv";
 
         // Ler dados dos arquivos
         List<Medico> medicos = leitor.lerMedicos(caminho_medicos);
