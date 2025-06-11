@@ -1,46 +1,28 @@
 import java.util.List;
-import java.util.ArrayList;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class MainP2 {
     public static void main(String[] args) {
-        try {
-            List<Medico> medicos = new ArrayList<>();
-            List<Paciente> pacientes = new ArrayList<>();
-            List<Consulta> consultas = new ArrayList<>();
+        // Declarar o leitor de arquivos
+        LeitorArquivo leitor = new LeitorArquivo();
 
+        // Declarar o caminho dos arquivos
+        String basePath = System.getProperty("user.dir") + "/src/";
+        String caminho_medicos = basePath + "medicos.csv";
+        String caminho_pacientes = basePath + "pacientes.csv";
+        String caminho_consultas = basePath + "consultas.csv";
 
-            //Simulação by GPT: 
-            // Simular médico
-            Medico medico = new Medico( "Dr. Lucas",1, "123");
-            medicos.add(medico);
+        // Ler dados dos arquivos
+        List<Medico> medicos = leitor.lerMedicos(caminho_medicos);
+        List<Paciente> pacientes = leitor.lerPacientes(caminho_pacientes);
+        List<Consulta> consultas = leitor.lerConsultas(caminho_consultas, medicos, pacientes);
 
-            // Simular paciente
-            Paciente paciente = new Paciente("João da Silva", "12345678900");
-            pacientes.add(paciente);
-
-            // Simular consulta
-            Consulta consulta = new Consulta(
-                LocalDate.of(2024, 6, 10),
-                LocalTime.of(14, 0),
-                paciente,
-                medico
-            );
-            consultas.add(consulta);
-
-            // Relacionamentos
-            consulta.ligarConsultaPaciente(pacientes);
-            consulta.ligarPacienteMedico(medicos, pacientes);
-
-            /////////
-
-            // Abrir GUI
-            new TelaLogin(medicos, pacientes, consultas);
-
-        } catch (Exception e) {
-            System.out.println("Erro ao iniciar o programa: " + e.getMessage());
-            e.printStackTrace();
+        // Conectar as consultas aos pacientes e médicos
+        for (Consulta c : consultas) {
+            c.ligarConsultaPaciente(pacientes);
+            c.ligarPacienteMedico(medicos, pacientes);
         }
+
+        // ✅ Iniciar a interface gráfica principal (tela inicial)
+        new TelaInicial(medicos, pacientes, consultas);
     }
 }

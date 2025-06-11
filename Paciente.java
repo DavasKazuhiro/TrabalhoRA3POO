@@ -1,18 +1,12 @@
 import java.util.ArrayList;
 
-public class Paciente {
-    private String nome;
-    private String cpf; // trocado de double para String
-
+public class Paciente extends Pessoa {
+    private String cpf;
     private ArrayList<Consulta> consultas = new ArrayList<>();
 
-    public Paciente(String nome, String cpf){
-            this.nome = nome;
-            this.cpf = cpf.trim();
-    }
-
-    public String getNome() {
-        return nome;
+    public Paciente(String nome, String cpf) {
+        super(nome); 
+        this.cpf = cpf.trim();
     }
 
     public String getCpf() {
@@ -20,12 +14,23 @@ public class Paciente {
     }
 
     public ArrayList<Consulta> getConsultas() {
-        return new ArrayList<>(consultas); // cópia defensiva
+        return new ArrayList<>(consultas); 
     }
 
     public void adicionarConsulta(Consulta consulta) {
         consultas.add(consulta);
     }
+    
+    @Override
+    public String exibirInfo() {
+        return "Paciente: " + nome + " | CPF: " + cpf;
+    }
 
-
+    @Override
+    public String toString() {
+        return "Paciente{" +
+               "nome='" + nome + '\'' +
+               ", cpf='" + cpf + '\'' +
+               '}';
+    }
 }
