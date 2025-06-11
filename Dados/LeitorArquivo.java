@@ -1,8 +1,10 @@
 package Dados;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -87,4 +89,79 @@ public class LeitorArquivo {
         }
         return lista;
     }
+
+//     public void salvarMedicos(List<Medico> medicos, String caminho)
+//         throws PersistenciaException {
+//     try (ObjectOutputStream oos =
+//              new ObjectOutputStream(new FileOutputStream(caminho))) {
+//         oos.writeObject(medicos);
+//     } catch (IOException e) {
+//         throw new PersistenciaException("Falha ao salvar medicos em binário", e);
+//     }
+// }
+
+public void salvarMedicos(List<Medico> medicos, String caminho) {
+    try {
+        FileOutputStream arquivo = new FileOutputStream(caminho);
+        ObjectOutputStream gravador = new ObjectOutputStream(arquivo);
+        gravador.writeObject(medicos);
+        gravador.close();
+        arquivo.close();
+    }
+    catch (IOException e) {
+        System.out.println("Excecao de I/O");
+        e.printStackTrace();
+    }
+}
+
+
+public void salvarPacientes(List<Paciente> pacientes, String caminho) {
+    try {
+        FileOutputStream arquivo = new FileOutputStream(caminho);
+        ObjectOutputStream gravador = new ObjectOutputStream(arquivo);
+        gravador.writeObject(pacientes);
+        gravador.close();
+        arquivo.close();
+    }
+    catch (IOException e) {
+        System.out.println("Excecao de I/O");
+        e.printStackTrace();
+    }
+}
+
+public void salvarConsultas(List<Consulta> consultas, String caminho) {
+    try {
+        FileOutputStream arquivo = new FileOutputStream(caminho);
+        ObjectOutputStream gravador = new ObjectOutputStream(arquivo);
+        gravador.writeObject(consultas);
+        gravador.close();
+        arquivo.close();
+    }
+    catch (IOException e) {
+        System.out.println("Excecao de I/O");
+        e.printStackTrace();
+    }
+}
+
+
+// public void salvarPacientes(List<Paciente> pacientes, String caminho)
+//         throws PersistenciaException {
+//     try (ObjectOutputStream oos =
+//              new ObjectOutputStream(new FileOutputStream(caminho))) {
+//         oos.writeObject(pacientes);
+//     } catch (IOException e) {
+//         throw new PersistenciaException("Falha ao salvar pacientes em binário", e);
+//     }
+// }
+
+// public void salvarConsultas(List<Consulta> consultas, String caminho)
+//         throws PersistenciaException {
+//     try (ObjectOutputStream oos =
+//              new ObjectOutputStream(new FileOutputStream(caminho))) {
+//         oos.writeObject(consultas);
+//     } catch (IOException e) {
+//         throw new PersistenciaException("Falha ao salvar consultas em binário", e);
+//     }
+// }
+
 }
